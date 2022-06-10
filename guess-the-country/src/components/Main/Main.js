@@ -2,6 +2,7 @@ import React from 'react'
 import './Main.scss'
 
 function Main({ randomCountry }) {
+  console.log(randomCountry);
   return (
     <div>
         <img src={randomCountry.flags.png} alt='Country Flag'/>
@@ -10,7 +11,7 @@ function Main({ randomCountry }) {
           <input type='text' name='name' id='name' placeholder='Guess the Country'/>
           <button 
           onClick={() => {
-            randomCountry.clickHandler(target.name.value)
+            randomCountry.clickHandler()
           }}
           >
             Submit</button>

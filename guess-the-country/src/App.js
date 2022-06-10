@@ -11,47 +11,52 @@ class App extends Component {
   state = {
     countries: [],
     randomCountry: {},
-    count: 0
-}
+    count: 0,
+  };
 
-componentDidMount() {
+  componentDidMount() {
     axios
-        .get(`${API_URL}/all`)
-        .then(response=> {
-            this.setState({
-                countries: response.data,
-            })
-        })
-        .catch(e=> console.log("error in component mounting", e))
-}
+      .get(`${API_URL}/all`)
+      .then((response) => {
+        this.setState({
+          countries: response.data,
+          randomCountry: response.data[0]
+        });
+      })
+      .catch((e) => console.log("error in component mounting", e));
+  }
 
-componentDidUpdate(prevProps) {
+  componentDidUpdate(prevProps) {
     // const previousRandomFlag = prevProps.match.params.id;
     // const currentRandomFlag = this.props.match.params.id;
+  }
 
-    if (SUBMIT.toLowerCase() === currentRandomFlag.toLowerCase()) {
-        //MAKE IT SAY CONGRATS
-        //MAKE THE COUNTER GO UP
-        this.getRandomFlag(this.state.countries);
-    }  else {
-        //GO TO GAME OVER PAGE
+  // getRandomFlag = (array) => {
+  //   array = this.state.countries;
+  //   const randomCountry = array[Math.floor(Math.random() * Array.length)];
+  //   this.setState({
+  //     randomCountry: randomCountry,
+  //   });
+  // };
+
+  clickHandler = (props) => {
+    const currentRandomFlag = this.state.random.name.common;
+    if (props.toLowerCase() === currentRandomFlag.toLowerCase()) {
+      this.setState({
+        count: 1
+      });
+      this.getRandomFlag(this.state.countries);
+    } else {
+      //GO TO GAME OVER PAGE
     }
-}
-
-getRandomFlag = (array) => {
-    array = this.state.countries;
-    const randomCountry = array[Math.floor(Math.random() * Array.length)];
-    this.setState({
-        randomCountry: randomCountry,
-    })
-}
+  };
 
   render() {
     return (
       <div className="App">
         <Header />
-        <Main randomCountry={this.state.randomCountry}/>
-        <Counter count={this.state.count}/>
+        <Main randomCountry={this.state.randomCountry} clickHandler={this.clickHandler} />
+        <Counter count={this.state.count} />
       </div>
     );
   }

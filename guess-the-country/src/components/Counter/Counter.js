@@ -1,12 +1,10 @@
 import React from "react";
 import "./Counter.scss";
 
-let score = 0;
-
-function Counter() {
+function Counter({ count }) {
   return (
     <div>
-      <h2>Score: {this}</h2>
+      <h2>Score: {count}</h2>
     </div>
   );
 }
