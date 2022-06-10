@@ -3,6 +3,9 @@ import Header from "./components/Header/Header";
 import Main from "./components/Main/Main";
 import "./App.scss";
 import { Component } from "react";
+import axios from "axios";
+
+const API_URL = 'https://restcountries.com/v3.1'
 
 class App extends Component {
   state = {
