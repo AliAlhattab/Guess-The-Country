@@ -6,6 +6,8 @@
   padding-block: 7rem;
   display: flex;
   justify-content: center;
+  padding: 12.3rem;
+  align-items: center;
   
 
   &__container {
@@ -22,7 +24,8 @@
   }
 
   &__flag {
-      width: 30%;
+      max-width: 30%;
+      height: auto;
       border: 1px white solid;
       box-shadow: 5px 5px 10px;
   }
