@@ -31,23 +31,28 @@ class App extends Component {
     // const currentRandomFlag = this.props.match.params.id;
   }
 
-  // getRandomFlag = (array) => {
-  //   array = this.state.countries;
-  //   const randomCountry = array[Math.floor(Math.random() * Array.length)];
-  //   this.setState({
-  //     randomCountry: randomCountry,
-  //   });
-  // };
+  getRandomFlag = (array) => {
+    array = this.state.countries;
+    const randomCountry = array[Math.floor(Math.random() * array.length)];
+    console.log(randomCountry)
+    this.setState({
+      randomCountry: randomCountry,
+    });
+  };
 
-  clickHandler = (props) => {
-    const currentRandomFlag = this.state.random.name.common;
-    if (props.toLowerCase() === currentRandomFlag.toLowerCase()) {
+  submitAnswer = (e) => {
+    e.preventDefault();
+
+    const currentRandomFlag = this.state.randomCountry.name.common;
+    if (e.target.name.value.toLowerCase() === currentRandomFlag.toLowerCase()) {
       this.setState({
-        count: 1
+        count: 1,
+        randomCountry: this.getRandomFlag(this.state.countries)
       });
-      this.getRandomFlag(this.state.countries);
+      
     } else {
-      //GO TO GAME OVER PAGE
+      alert(`you suck! your score was ${this.state.count}`)
+      window.location.reload();
     }
   };
 
@@ -55,7 +60,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main randomCountry={this.state.randomCountry} clickHandler={this.clickHandler} />
+        <Main randomCountry={this.state.randomCountry} submit={this.submitAnswer} />
         <Counter count={this.state.count} />
       </div>
     );
