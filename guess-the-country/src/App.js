@@ -38,6 +38,7 @@ class App extends Component {
     this.setState({
       randomCountry: randomCountry,
     });
+    console.log(randomCountry)
   };
 
   submitAnswer = (e) => {
