@@ -6,7 +6,7 @@ function Main({ randomCountry, submit, count }) {
   return (
     <div className="main__container">
       <div className="main">
-        <img className="main__flag" src={randomCountry.flags?.png} alt="Country Flag" />
+        <img className="main__flag" src={randomCountry?.flags?.png} alt="Country Flag" />
         <form className="main__form" onSubmit={submit}>
           <label className="main__form-label">This is the flag of what country?</label>
           <input

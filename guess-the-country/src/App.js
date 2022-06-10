@@ -20,34 +20,32 @@ class App extends Component {
       .then((response) => {
         this.setState({
           countries: response.data,
-          randomCountry: response.data[0]
+          randomCountry: response.data[Math.floor(Math.random() * response.data.length)]
         });
       })
       .catch((e) => console.log("error in component mounting", e));
   }
 
-  componentDidUpdate(prevProps) {
-    // const previousRandomFlag = prevProps.match.params.id;
-    // const currentRandomFlag = this.props.match.params.id;
-  }
+  getRandomFlag = (array) => {
+    const randomCountry = array[Math.floor(Math.random() * array.length)];
+    this.setState({
+      randomCountry: randomCountry
+    });
+  };
 
-  // getRandomFlag = (array) => {
-  //   array = this.state.countries;
-  //   const randomCountry = array[Math.floor(Math.random() * Array.length)];
-  //   this.setState({
-  //     randomCountry: randomCountry,
-  //   });
-  // };
+  submitAnswer = (e) => {
+    e.preventDefault();
 
-  clickHandler = (props) => {
-    const currentRandomFlag = this.state.random.name.common;
-    if (props.toLowerCase() === currentRandomFlag.toLowerCase()) {
+    const currentRandomFlag = this.state.randomCountry.name.common;
+    if (e.target.name.value.toLowerCase() === currentRandomFlag.toLowerCase()) { console.log(this.state.countries)
       this.setState({
-        count: 1
+        count: ++this.state.count
       });
-      this.getRandomFlag(this.state.countries);
+      this.getRandomFlag(this.state.countries)
+      e.target.name.value = "";
     } else {
-      //GO TO GAME OVER PAGE
+      alert(`Good Try! Your Score is: ${this.state.count} | The answer was ${this.state.randomCountry.name.common}`)
+      window.location.reload();
     }
   };
 
@@ -55,7 +53,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main randomCountry={this.state.randomCountry} clickHandler={this.clickHandler} count={this.state.count} />
+        <Main randomCountry={this.state.randomCountry} submit={this.submitAnswer} count={this.state.count} />
       </div>
     );
   }
