@@ -1,0 +1,61 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+.main {
+  width: 100%;
+  margin: 0;
+  padding-block: 7rem;
+  display: flex;
+  justify-content: center;
+  padding: 12.3rem;
+  align-items: center;
+  
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    background-image: url("../../assets/images/earth.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100%;
+    margin: 0;
+    padding-bottom: 4rem;
+    align-items: center;
+  }
+
+  &__flag {
+      max-width: 30%;
+      height: auto;
+      border: 1px white solid;
+      box-shadow: 5px 5px 10px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    padding-left: 2rem;
+    justify-content: center;
+    width: 30%;
+  }
+  &__form-label {
+    color: white;
+    font-size: 2rem;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+  }
+
+  &__form-input {
+    margin-block: 1rem;
+    padding-block: 1rem;
+    box-shadow: 5px 5px 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+  }
+
+  &__form-button {
+    background-color: lightblue;
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: 700;
+    box-shadow: 5px 5px 10px;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+  }
+}
