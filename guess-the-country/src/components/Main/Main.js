@@ -2,6 +2,7 @@ import React from 'react'
 import './Main.scss'
 
 function Main({ randomCountry }) {
+  console.log(randomCountry);
   return (
     <div>
         <img alt='Country Flag'/>
