@@ -1,11 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Kdam+Thmor+Pro&display=swap');
+
+
 .header {
     margin: 0;
-    background-color: rgba(0, 0, 0, .5);
-    box-shadow: 0 4px 10px;
-
+    background-color: rgba(0, 0, 0);
+    padding-block: 1rem;
 }
 
 .header__title {
     color: whitesmoke;
+    font-family: 'Kdam Thmor Pro', sans-serif;
+    letter-spacing: 2px;
 
 }
