@@ -6,7 +6,9 @@ const API_URL = "https://restcountries.com/v3.1";
 
 class MainPage extends  Component {
     state = {
-        countries: []
+        countries: [],
+        randomCountry: {},
+        count: 0
     }
     
     componentDidMount() {
@@ -21,8 +23,8 @@ class MainPage extends  Component {
     }
 
     componentDidUpdate(prevProps) {
-        const previousRandomFlag = prevProps.match.params.id;
-        const currentRandomFlag = this.props.match.params.id;
+        // const previousRandomFlag = prevProps.match.params.id;
+        // const currentRandomFlag = this.props.match.params.id;
 
         if (SUBMIT.toLowerCase() === currentRandomFlag.toLowerCase()) {
             //MAKE IT SAY CONGRATS
@@ -34,15 +36,18 @@ class MainPage extends  Component {
     }
 
     getRandomFlag = (array) => {
-        const randomFlag = array[Math.floor(Math.random() * Array.length)];
-        return randomFlag;
+        array = this.state.countries;
+        const randomCountry = array[Math.floor(Math.random() * Array.length)];
+        this.setState({
+            randomCountry: randomCountry,
+        })
     }
     
     render() {
         return (
             <>
-                currentCountry={this.state.countries.name.common}
-                currentFlag={this.state.countries.flags.png}
+                currentCountry={this.state.randomCountry.name.common}
+                currentFlag={this.state.randomCountry.flags.png}
             </>
         )
     }
