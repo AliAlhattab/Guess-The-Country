@@ -3,8 +3,8 @@ import "./Counter.scss";
 
 function Counter({ count }) {
   return (
-    <div>
-      <h2>Score: {count}</h2>
+    <div className="counter">
+      <h2 className="counter__score">Score: {count}</h2>
     </div>
   );
 }

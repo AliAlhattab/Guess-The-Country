@@ -20,39 +20,31 @@ class App extends Component {
       .then((response) => {
         this.setState({
           countries: response.data,
-          randomCountry: response.data[0]
+          randomCountry: response.data[Math.floor(Math.random() * response.data.length)]
         });
       })
       .catch((e) => console.log("error in component mounting", e));
   }
 
-  componentDidUpdate(prevProps) {
-    // const previousRandomFlag = prevProps.match.params.id;
-    // const currentRandomFlag = this.props.match.params.id;
-  }
-
   getRandomFlag = (array) => {
-    array = this.state.countries;
     const randomCountry = array[Math.floor(Math.random() * array.length)];
-    console.log(randomCountry)
     this.setState({
-      randomCountry: randomCountry,
+      randomCountry: randomCountry
     });
-    console.log(randomCountry)
   };
 
   submitAnswer = (e) => {
     e.preventDefault();
 
     const currentRandomFlag = this.state.randomCountry.name.common;
-    if (e.target.name.value.toLowerCase() === currentRandomFlag.toLowerCase()) {
+    if (e.target.name.value.toLowerCase() === currentRandomFlag.toLowerCase()) { console.log(this.state.countries)
       this.setState({
-        count: 1,
-        randomCountry: this.getRandomFlag(this.state.countries)
+        count: ++this.state.count
       });
-      
+      this.getRandomFlag(this.state.countries)
+      e.target.name.value = "";
     } else {
-      alert(`you suck! your score was ${this.state.count}`)
+      alert(`Good Try! Your Score is: ${this.state.count}`)
       window.location.reload();
     }
   };
@@ -61,8 +53,7 @@ class App extends Component {
     return (
       <div className="App">
         <Header />
-        <Main randomCountry={this.state.randomCountry} submit={this.submitAnswer} />
-        <Counter count={this.state.count} />
+        <Main randomCountry={this.state.randomCountry} submit={this.submitAnswer} count={this.state.count} />
       </div>
     );
   }

@@ -3,8 +3,8 @@ import './Header.scss'
 
 function Header() {
   return (
-    <div>
-        <h1>Guess the Country</h1>
+    <div className='header'>
+        <h1 className="header__title">Guess the Country</h1>
     </div>
   )
 }
