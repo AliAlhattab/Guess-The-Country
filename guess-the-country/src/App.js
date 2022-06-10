@@ -44,7 +44,7 @@ class App extends Component {
       this.getRandomFlag(this.state.countries)
       e.target.name.value = "";
     } else {
-      alert(`Good Try! Your Score is: ${this.state.count}`)
+      alert(`Good Try! Your Score is: ${this.state.count} | The answer was ${this.state.randomCountry.name.common}`)
       window.location.reload();
     }
   };
