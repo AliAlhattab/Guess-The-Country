@@ -1,21 +1,15 @@
 import React from 'react'
 import './Main.scss'
 
-function Main({ randomCountry }) {
-  console.log(randomCountry);
+function Main({ randomCountry, submit}) {
   return (
     <div>
-        <img alt='Country Flag'/>
-        <div>
+        <img src={randomCountry.flags?.png} alt='Country Flag'/>
+        <form onSubmit={submit}>
           <label>Guess the Country </label>
           <input type='text' name='name' id='name' placeholder='Guess the Country'/>
-          <button 
-          onClick={() => {
-            randomCountry.clickHandler()
-          }}
-          >
-            Submit</button>
-        </div>
+          <button>Submit</button>
+        </form>
     </div>
   )
 }
