@@ -5,11 +5,7 @@ import "./App.scss";
 import { Component } from "react";
 import axios from "axios";
 
-<<<<<<< HEAD
-const API_URL = "https://restcountries.com/v3.1";
-=======
 const API_URL = 'https://restcountries.com/v3.1'
->>>>>>> develop
 
 class App extends Component {
   state = {
@@ -24,6 +20,7 @@ class App extends Component {
       .then((response) => {
         this.setState({
           countries: response.data,
+          randomCountry: response.data[0]
         });
       })
       .catch((e) => console.log("error in component mounting", e));
@@ -34,18 +31,19 @@ class App extends Component {
     // const currentRandomFlag = this.props.match.params.id;
   }
 
-  getRandomFlag = (array) => {
-    array = this.state.countries;
-    const randomCountry = array[Math.floor(Math.random() * Array.length)];
-    this.setState({
-      randomCountry: randomCountry,
-    });
-  };
+  // getRandomFlag = (array) => {
+  //   array = this.state.countries;
+  //   const randomCountry = array[Math.floor(Math.random() * Array.length)];
+  //   this.setState({
+  //     randomCountry: randomCountry,
+  //   });
+  // };
 
-  clickHandler = () => {
-    if (SUBMIT.toLowerCase() === currentRandomFlag.toLowerCase()) {
+  clickHandler = (props) => {
+    const currentRandomFlag = this.state.random.name.common;
+    if (props.toLowerCase() === currentRandomFlag.toLowerCase()) {
       this.setState({
-        count: count++,
+        count: 1
       });
       this.getRandomFlag(this.state.countries);
     } else {
