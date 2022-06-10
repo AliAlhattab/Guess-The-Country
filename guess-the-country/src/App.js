@@ -5,7 +5,11 @@ import "./App.scss";
 import { Component } from "react";
 import axios from "axios";
 
+<<<<<<< HEAD
 const API_URL = "https://restcountries.com/v3.1";
+=======
+const API_URL = 'https://restcountries.com/v3.1'
+>>>>>>> develop
 
 class App extends Component {
   state = {
